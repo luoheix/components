@@ -9,8 +9,8 @@ import { AutoTooltip } from 'luows-component';
 
 export default () => (
   <div style={{ width: 150 }}>
-    <AutoTooltip title="未超过容器宽度" />
     <AutoTooltip title="超过容器宽度，超过容器宽度，超过容器宽度" />
+    <AutoTooltip title="未超过容器宽度" />
   </div>
 );
 ```
