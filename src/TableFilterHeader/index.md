@@ -1,6 +1,7 @@
 ## Table-filter-header
 
-响应式表格搜索头部，超过三个表单显示展开收起按钮。
+响应式表格搜索头部，超过三个表单显示展开收起按钮。  
+文档地址：[响应式表格搜索头部 ts + hooks · 黑熊君](https://www.yuque.com/luowenshuai/design/ygflai '响应式表格搜索头部 ts + hooks · 黑熊君')
 
 ## 使用效果
 
@@ -186,7 +187,7 @@ export default TableFilterHeader;
 
 ### index.less 文件
 
-```
+```tsx | pure
 .tableFilterHeader {
   :global {
     .ant-col .ant-form-item-control {

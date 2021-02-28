@@ -1,6 +1,7 @@
 ## Auto-tooltip
 
-利用 ahooks-useSize + antd-Tooltip 实现超长显示 ““... + Tooltip”” 效果，父容器必须有宽度。
+利用 ahooks-useSize + antd-Tooltip 实现超长显示 ““... + Tooltip”” 效果，父容器必须有宽度。  
+文档地址：[利用 ahooks-useSize 实现超长 Tooltip 效果 · 黑熊君](https://www.yuque.com/luowenshuai/design/gk0oxc '利用 ahooks-useSize 实现超长 Tooltip 效果 · 黑熊君')
 
 ## 使用效果
 
@@ -53,7 +54,7 @@ export default (props: TooltipProps) => {
 
 ### index.less 文件
 
-```
+```tsx | pure
 .overflow {
   position: relative;
   width: 100%;

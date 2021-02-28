@@ -5,11 +5,12 @@ import { useSize } from 'ahooks';
 import styles from './index.less';
 import autoTooltipImg from '../assets/images/auto-tooltip.png';
 import tableFilterHeaderImg from '../assets/images/table-filter-header.png';
+import watermarkImg from '../assets/images/watermark.png';
 
 const menuList = [
   {
     path: '/auto-tooltip',
-    title: '文本超长显示 Tooltip 效果（自适应）',
+    title: '文本超长显示 Tooltip',
     img: autoTooltipImg,
   },
   {
@@ -17,16 +18,16 @@ const menuList = [
     title: '响应式表格搜索头部',
     img: tableFilterHeaderImg,
   },
-  // {
-  //   path: '/auto-tooltip',
-  //   title: '文本超长显示 Tooltip 效果（自适应）',
-  //   img: autoTooltipImg,
-  // },
+  {
+    path: '/watermark',
+    title: '页面水印效果',
+    img: watermarkImg,
+  },
 ];
 
 export default () => {
   const ref = useRef(null);
-  const { width } = useSize(ref);
+  const { width = 0 } = useSize(ref);
 
   // 响应式
   const span = (() => {
