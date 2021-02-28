@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Row, Col, Space, Button, Form } from 'antd';
+import { useSize } from 'ahooks';
 import { DownOutlined } from '@ant-design/icons';
 import styles from './index.less';
-
-// 响应式
-const colProps = { xs: 24, sm: 12, md: 8, lg: 8, xl: 6, xxl: 6 };
 
 interface TableFilterHeaderProps {
   children: React.ReactElement | React.ReactElement[];
   onReset: () => void;
   onSearch: () => void;
   loading: boolean;
+  isParent?: boolean;
 }
 
 const TableFilterHeader: React.FC<TableFilterHeaderProps> = ({
@@ -18,8 +17,27 @@ const TableFilterHeader: React.FC<TableFilterHeaderProps> = ({
   onReset,
   onSearch,
   loading,
+  isParent,
 }) => {
   const [collapsed, setCollapsed] = useState(true);
+  const ref = useRef(null);
+  const { width = 0 } = useSize(ref);
+
+  // 响应式：父元素/浏览器
+  const colProps = isParent
+    ? (() => {
+        switch (true) {
+          case width > 900:
+            return { span: 6 };
+          case width > 650:
+            return { span: 8 };
+          case width > 450:
+            return { span: 12 };
+          default:
+            return { span: 24 };
+        }
+      })()
+    : { xs: 24, sm: 12, md: 8, lg: 8, xl: 6, xxl: 6 };
 
   const childrenList: React.ReactElement[] = {
     '[object Object]': [children] as any, // 一个子项
@@ -27,7 +45,7 @@ const TableFilterHeader: React.FC<TableFilterHeaderProps> = ({
   }[Object.prototype.toString.call(children)];
 
   return (
-    <Row gutter={24} className={styles.tableFilterHeader}>
+    <Row gutter={24} className={styles.tableFilterHeader} ref={ref}>
       {childrenList.map(
         (item, index) =>
           // 收起状态只展示前三个

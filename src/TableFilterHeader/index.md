@@ -14,10 +14,6 @@ const { RangePicker } = DatePicker;
 export default () => {
   const [loading, setLoading] = useState(false);
 
-  const onReset = () => {
-    console.log('重置');
-  };
-
   const onSearch = () => {
     setLoading(true);
     console.log('查询');
@@ -25,6 +21,11 @@ export default () => {
       console.log('查询完成');
       setLoading(false);
     }, 1000);
+  };
+
+  const onReset = () => {
+    console.log('重置');
+    onSearch();
   };
 
   return (
@@ -36,6 +37,7 @@ export default () => {
           onReset={onReset}
           onSearch={onSearch}
           loading={loading}
+          isParent={true}
         >
           <Form.Item label="Field A">
             <Input placeholder="请输入" />
@@ -50,6 +52,7 @@ export default () => {
           onReset={onReset}
           onSearch={onSearch}
           loading={loading}
+          isParent={true}
         >
           <Form.Item label="Field A">
             <Input placeholder="请输入" />
@@ -74,6 +77,7 @@ export default () => {
           onReset={onReset}
           onSearch={onSearch}
           loading={loading}
+          isParent={true}
         >
           <Form.Item label="Field A">
             <Input placeholder="请输入" />

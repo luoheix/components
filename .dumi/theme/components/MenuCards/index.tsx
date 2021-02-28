@@ -4,6 +4,7 @@ import { Card, Row, Col } from 'antd';
 import { useSize } from 'ahooks';
 import styles from './index.less';
 import autoTooltipImg from '../assets/images/auto-tooltip.png';
+import tableFilterHeaderImg from '../assets/images/table-filter-header.png';
 
 const menuList = [
   {
@@ -14,7 +15,7 @@ const menuList = [
   {
     path: '/table-filter-header',
     title: '响应式表格搜索头部',
-    // img: autoTooltipImg,
+    img: tableFilterHeaderImg,
   },
   // {
   //   path: '/auto-tooltip',
@@ -24,7 +25,7 @@ const menuList = [
 ];
 
 export default () => {
-  const ref = useRef();
+  const ref = useRef(null);
   const { width } = useSize(ref);
 
   // 响应式
