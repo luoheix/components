@@ -8,7 +8,7 @@ import type { TooltipProps } from 'antd/lib/tooltip';
 import styles from './index.less';
 
 // 同 antd-tootip 的 props
-export default (props: TooltipProps) => {
+const AutoTooltip: React.FC<TooltipProps> = (props) => {
   const { title = '' } = props;
   const fixedRef = useRef(null);
   const autoRef = useRef(null);
@@ -29,3 +29,5 @@ export default (props: TooltipProps) => {
     </div>
   );
 };
+
+export default AutoTooltip;
