@@ -55,7 +55,7 @@ export default AutoTooltip;
 
 ### index.less 文件
 
-```tsx | pure
+```less | pure
 .overflow {
   position: relative;
   width: 100%;

@@ -187,7 +187,7 @@ export default TableFilterHeader;
 
 ### index.less 文件
 
-```tsx | pure
+```less | pure
 .tableFilterHeader {
   :global {
     .ant-col .ant-form-item-control {

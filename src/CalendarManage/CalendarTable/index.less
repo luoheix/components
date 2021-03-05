@@ -1,0 +1,70 @@
+.calendarTable {
+  margin-top: 10px;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .theader {
+    display: flex;
+
+    > li {
+      flex: 1;
+      text-align: center;
+      font-size: 16px;
+      line-height: 30px;
+      background-color: #fafafa;
+      border: 2px solid #999999;
+
+      &:not(:last-child) {
+        border-right: none;
+      }
+    }
+  }
+
+  .tbody {
+    > ul {
+      display: flex;
+
+      > li {
+        flex: 1;
+        font-size: 18px;
+        height: 60px;
+        color: rgba(0, 0, 0, 0.25);
+        border: 2px solid skyblue;
+        border-top: none;
+
+        &:not(:last-child) {
+          border-right: none;
+        }
+      }
+    }
+
+    .day-border {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      border: 2px solid transparent;
+
+      &:hover {
+        border-color: #999;
+      }
+
+      .day-number {
+        margin: 3px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 26px;
+      }
+    }
+  }
+}
