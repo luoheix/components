@@ -16,8 +16,7 @@ export default () => <CalendarManage />;
 
 ### 文件目录
 
-组件的目录结构
-<Tree name="Calendar-manage" />
+> <Tree name="Calendar-manage" />
 
 ### index.tsx 文件
 
