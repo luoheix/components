@@ -6,6 +6,7 @@ import styles from './index.less';
 import autoTooltipImg from '../assets/images/auto-tooltip.png';
 import tableFilterHeaderImg from '../assets/images/table-filter-header.png';
 import watermarkImg from '../assets/images/watermark.png';
+import calendarManageImg from '../assets/images/calendar-manage.png';
 
 const menuList = [
   {
@@ -22,6 +23,11 @@ const menuList = [
     path: '/watermark',
     title: '页面水印效果',
     img: watermarkImg,
+  },
+  {
+    path: '/calendar-manage',
+    title: '日历管理',
+    img: calendarManageImg,
   },
 ];
 
