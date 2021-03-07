@@ -2,26 +2,41 @@ import { Tree } from 'antd';
 import styles from './index.less';
 
 const treeMap = {
+  // 日历管理目录树
   'Calendar-manage': [
     {
       title: 'CalendarManage',
       key: 'CalendarManage',
+      selectable: false,
       children: [
-        { title: 'index.tsx', key: 'index.tsx', isLeaf: true },
-        { title: 'index.less', key: 'index.less', isLeaf: true },
-        { title: 'data.d.ts', key: 'data.d.ts', isLeaf: true },
+        {
+          title: 'index.tsx',
+          key: 'indextsx-文件',
+          isLeaf: true,
+        },
+        {
+          title: 'index.less',
+          key: 'indexless-文件',
+          isLeaf: true,
+        },
+        {
+          title: 'data.d.ts',
+          key: 'datadts-文件',
+          isLeaf: true,
+        },
         {
           title: 'CalendarHeader',
           key: 'CalendarHeader',
+          selectable: false,
           children: [
             {
               title: 'index.tsx',
-              key: 'CalendarHeader/index.tsx',
+              key: 'calendarheaderindextsx-文件',
               isLeaf: true,
             },
             {
               title: 'index.less',
-              key: 'CalendarHeader/index.less',
+              key: 'calendarheaderindexless-文件',
               isLeaf: true,
             },
           ],
@@ -29,15 +44,16 @@ const treeMap = {
         {
           title: 'CalendarTable',
           key: 'CalendarTable',
+          selectable: false,
           children: [
             {
               title: 'index.tsx',
-              key: 'CalendarTable/index.tsx',
+              key: 'calendartableindextsx-文件',
               isLeaf: true,
             },
             {
               title: 'index.less',
-              key: 'CalendarTable/index.less',
+              key: 'calendartableindexless-文件',
               isLeaf: true,
             },
           ],
@@ -51,12 +67,19 @@ interface TreeProps {
   name: 'Calendar-manage' | 'Auto-tooltip';
 }
 
-export default ({ name }: React.FC<TreeProps>) => (
+const DirectoryTree: React.FC<TreeProps> = ({ name }) => (
   <Tree.DirectoryTree
     className={styles['theme-tree']}
     showLine={{ showLeafIcon: false }}
-    selectable={false}
     defaultExpandAll
+    selectedKeys={[]}
     treeData={treeMap[name]}
+    onSelect={([selectedKey]) => {
+      // 页面跳转到对应位置
+      const selectDom = document.getElementById(`${selectedKey}`);
+      selectDom && selectDom.scrollIntoView();
+    }}
   />
 );
+
+export default DirectoryTree;
