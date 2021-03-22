@@ -7,6 +7,7 @@ import autoTooltipImg from '../assets/images/auto-tooltip.png';
 import tableFilterHeaderImg from '../assets/images/table-filter-header.png';
 import watermarkImg from '../assets/images/watermark.png';
 import calendarManageImg from '../assets/images/calendar-manage.png';
+import addDraggableTableImg from '../assets/images/add-draggable-table.png';
 
 const menuList = [
   {
@@ -28,6 +29,11 @@ const menuList = [
     path: '/calendar-manage',
     title: '日历管理',
     img: calendarManageImg,
+  },
+  {
+    path: '/add-draggable-table',
+    title: '可拖拽、可增删动态表格',
+    img: addDraggableTableImg,
   },
 ];
 
