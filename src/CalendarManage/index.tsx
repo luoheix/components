@@ -40,9 +40,9 @@ const weekMapList = [
 
 // 如果 date 为 Date 对象直接克隆，否则转化为 Date
 const switchDateObject = (date: Date | string) => {
-  return Object.prototype.toString.call(date) === '[object Date]'
-    ? new Date(date.valueOf())
-    : new Date(date.replace(/-/g, '/'));
+  return typeof date === 'string'
+    ? new Date(date.replace(/-/g, '/'))
+    : new Date(date.valueOf());
 };
 
 // 获取初始列表，6 横 7 列
