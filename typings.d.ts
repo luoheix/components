@@ -10,3 +10,4 @@ declare module '*.gif';
 declare module '*.bmp';
 declare module '*.tiff';
 declare module 'style-it';
+declare module 'react-drag-listview';

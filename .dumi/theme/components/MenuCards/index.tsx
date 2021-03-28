@@ -8,6 +8,8 @@ import tableFilterHeaderImg from '../assets/images/table-filter-header.png';
 import watermarkImg from '../assets/images/watermark.png';
 import calendarManageImg from '../assets/images/calendar-manage.png';
 import addDraggableTableImg from '../assets/images/add-draggable-table.png';
+import imgViewerImg from '../assets/images/img-viewer.png';
+import modalPromptImg from '../assets/images/modal-prompt.png';
 
 const menuList = [
   {
@@ -34,6 +36,16 @@ const menuList = [
     path: '/add-draggable-table',
     title: '可拖拽、可增删动态表格',
     img: addDraggableTableImg,
+  },
+  {
+    path: '/img-viewer',
+    title: '基于 react-viewer 的图片查看器',
+    img: imgViewerImg,
+  },
+  {
+    path: '/modal-prompt',
+    title: '基于 umi/prompt 离开页面时的二次确认弹窗',
+    img: modalPromptImg,
   },
 ];
 

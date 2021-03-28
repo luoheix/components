@@ -3,7 +3,7 @@
 可拖拽、可增删动态表格
 文档地址：[antd 可拖拽、可增删动态表格 · 黑熊君](https://www.yuque.com/luowenshuai/design/rgrbhf 'antd 可拖拽、可增删动态表格 · 黑熊君')
 
-## 使用效果
+## 功能实现
 
 ```tsx
 import React from 'react';
