@@ -4,4 +4,6 @@ export { default as Watermark } from './Watermark';
 export { default as CalendarManage } from './CalendarManage';
 export { default as ImgViewer } from './ImgViewer';
 export { default as useViewer } from './ImgViewer/useViewer';
-export { default as ModalPrompt } from './ModalPrompt';
+export { default as useViewerPro } from './ImgViewer/useViewerPro';
+export { default as CustomPromptPro } from './CustomPromptPro';
+export { default as CustomPrompt } from './CustomPrompt';

@@ -43,8 +43,8 @@ const menuList = [
     img: imgViewerImg,
   },
   {
-    path: '/modal-prompt',
-    title: '基于 umi/prompt 离开页面时的二次确认弹窗',
+    path: '/custom-prompt',
+    title: '离开页面时的确认弹窗',
     img: modalPromptImg,
   },
 ];

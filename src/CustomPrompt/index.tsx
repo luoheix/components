@@ -37,23 +37,28 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-interface ModalPromptProps {
+interface CustomPromptProps {
   exclusion?: string[]; // 跳转路由排除列表
 }
 
-const ModalPrompt: React.FC<ModalPromptProps> = ({ exclusion }) => {
+const CustomPrompt: React.FC<CustomPromptProps> = ({ exclusion }) => {
   const [state, dispatch] = useReducer(reducer, initState);
   return (
     <React.Fragment>
       <Prompt
         message={({ pathname, search }, action) => {
-          dispatch({
-            type: 'open',
-            payload: { to: `${pathname}${search}`, action },
-          });
-          // 排除登录地址和 exclusion 地址
+          // 排除登录地址、exclusion 地址和当前地址
           const isExclusion =
-            /^\/login\//.test(pathname) || exclusion?.includes(pathname);
+            /^\/login\//.test(pathname) ||
+            exclusion?.includes(pathname) ||
+            history.location.pathname === pathname;
+
+          !isExclusion &&
+            dispatch({
+              type: 'open',
+              payload: { to: `${pathname}${search}`, action },
+            });
+
           return isExclusion || state.visible;
         }}
       />
@@ -74,4 +79,4 @@ const ModalPrompt: React.FC<ModalPromptProps> = ({ exclusion }) => {
   );
 };
 
-export default ModalPrompt;
+export default CustomPrompt;
