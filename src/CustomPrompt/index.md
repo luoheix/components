@@ -1,6 +1,14 @@
-## Modal-prompt
+## Custom-prompt
 
-基于 [Prompt](https://umijs.org/zh-CN/api#prompt) 离开页面时的二次确认弹窗, 不支持 `<a>` 标签跳转，可以使用 `history` 方法或 `Link` 组件跳转页面。
+**更好的实现方式 [CustomPromptPro](/custom-prompt-pro)**
+
+基于 [Prompt](https://umijs.org/zh-CN/api#prompt) 离开页面时的二次确认弹窗, ，可以使用 `history` 方法或 `Link` 组件跳转页面。  
+缺点
+
+- 存在未知 bug
+- 无法区分前进还是后退
+- 不支持刷新和浏览器地址直接切换
+- 不支持 `<a>` 标签跳转过来的页面和跳出的页面
 
 ### 使用效果
 
@@ -8,7 +16,7 @@
 import React, { useState } from 'react';
 import { history, Link } from 'umi';
 import { Button } from 'antd';
-import { ModalPrompt } from 'luows-component';
+import { CustomPrompt } from 'luows-component';
 
 export default () => {
   const [isPrompt, setIsPrompt] = useState(true);
@@ -24,14 +32,21 @@ export default () => {
       <Button onClick={() => history.push('/')}>history 方法路由切换</Button>
       <br />
       <br />
-      <Button onClick={() => history.goBack()}>history 方法路由后退</Button>
+      <Button onClick={() => history.goBack()}>
+        history 方法路由后退，需是离开当前页面才生效
+      </Button>
       <br />
       <br />
       <Link to="/">Link 标签跳转</Link>
       <br />
       <br />
+      <Link to="/watermark">
+        <Button>排除 "/watermark" 地址</Button>
+      </Link>
+      <br />
+      <br />
       <a href="/">a 标签跳转（不支持）</a>
-      {isPrompt && <ModalPrompt />}
+      {isPrompt && <CustomPrompt exclusion={['/watermark']} />}
     </React.Fragment>
   );
 };
@@ -79,23 +94,28 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-interface ModalPromptProps {
+interface CustomPromptProps {
   exclusion?: string[]; // 跳转路由排除列表
 }
 
-const ModalPrompt: React.FC<ModalPromptProps> = ({ exclusion }) => {
+const CustomPrompt: React.FC<CustomPromptProps> = ({ exclusion }) => {
   const [state, dispatch] = useReducer(reducer, initState);
   return (
     <React.Fragment>
       <Prompt
         message={({ pathname, search }, action) => {
-          dispatch({
-            type: 'open',
-            payload: { to: `${pathname}${search}`, action },
-          });
-          // 排除登录地址和 exclusion 地址
+          // 排除登录地址、exclusion 地址和当前地址
           const isExclusion =
-            /^\/login\//.test(pathname) || exclusion?.includes(pathname);
+            /^\/login\//.test(pathname) ||
+            exclusion?.includes(pathname) ||
+            history.location.pathname === pathname;
+
+          !isExclusion &&
+            dispatch({
+              type: 'open',
+              payload: { to: `${pathname}${search}`, action },
+            });
+
           return isExclusion || state.visible;
         }}
       />
@@ -116,5 +136,5 @@ const ModalPrompt: React.FC<ModalPromptProps> = ({ exclusion }) => {
   );
 };
 
-export default ModalPrompt;
+export default CustomPrompt;
 ```
